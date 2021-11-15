@@ -1,0 +1,21 @@
+1
+bug: the startpoint of rectangle which represents time does not exist from the left side of canvas
+should happen: the size of remaining decreases so the rectangle could start from the left side of canvas
+
+2
+bug: as the frog enter the left hand home it died
+should happen: the x cordinate of left hand home should be appended in self.home_x
+
+3
+bug: as the first frog died,the second frug start at the same position as the first frog. When the first frog died, all the frog died
+should happen: the second frog reset the position and it starts from the initial position
+
+
+4
+bug: as the game over and enter the r,the game restart with only frames instead of moving objects
+should happeen: for the restart function,self.game_running should be true
+
+
+5.
+bug: as the frog touches the turtle the frog died
+should happen: as the frog touches the turtle it seems as on log
