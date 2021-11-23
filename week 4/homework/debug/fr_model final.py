@@ -262,6 +262,7 @@ class Model():
         # the left of the home) + GRID_SIZE/2 (to get the centre of the
         # grid square)
         x = (spacing + GRID_SIZE)//2
+        ###################################
         for i in range(0,5):
             self.homes_x.append(x)
             self.homes_occupied.append(False)
@@ -293,6 +294,7 @@ class Model():
         self.pause_start(1, "self.next_level()")
 
     def reset_homes(self):
+        ##############################
         for i in range(0,5):
             self.homes_occupied[i] = False
 
@@ -327,6 +329,7 @@ class Model():
         self.controller.game_over()
 
     def restart(self):
+        ############################
         self.game_running = True
         self.level = 1
         self.score = 0
@@ -348,6 +351,7 @@ class Model():
         self.controller.unregister_objects()
         self.create_logs()
         self.create_cars()
+        #############################
         self.won = False
         self.paused = False
 
@@ -363,7 +367,7 @@ class Model():
 
     def check_frog_crossing_river(self):
         # frog is crossing the river
-        on_log = self.frog.on_log()
+        on_log = self.frog.on_log
         print(on_log)
         if (not (on_log is None)) and (not on_log.contains(self.frog)):
             # frog was on a log, but has now left that log
@@ -373,6 +377,7 @@ class Model():
             # check if it's now on any other log
             for log in self.logs:
                 if log.contains(self.frog):
+                    #############################
                     on_log = log
                     break
         if on_log is None:
@@ -410,7 +415,7 @@ class Model():
         if x < 0 or x > CANVAS_WIDTH:
             self.died()
             return
-        
+        #################################
         remaining = self.end_time - time.time()
         if remaining <= 0:
             self.game_over()
