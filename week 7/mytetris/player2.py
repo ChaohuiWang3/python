@@ -14,8 +14,6 @@ class RandomPlayer(Player):
     def __init__(self, seed=None):
         self.random = Random(seed)
 
-
-
     def score_highestposition(self, board):
         miny = 24
         for (x,y) in board.cells:
@@ -34,15 +32,13 @@ class RandomPlayer(Player):
                 Action.Bomb,
             ])  
         else:
-            for rotation in range(0, 4):
+            for rotation in range(0,2):
                 for x in range(0,10):
                     sandbox = board.clone() 
+                    xpos = sandbox.falling.left
                     moves = []
                     landed = False 
-                    number1 = len(sandbox.cells)
-                    if rotation == 0:
-                        moves = []
-                    elif rotation == 1:
+                    if rotation == 1:
                         sandbox.rotate(Rotation.Clockwise)
                         moves.append(Rotation.Clockwise)
                     elif rotation == 2:
@@ -50,10 +46,11 @@ class RandomPlayer(Player):
                         sandbox.rotate(Rotation.Clockwise)
                         moves.append(Rotation.Clockwise)
                         moves.append(Rotation.Clockwise)
-                    else:                      
+                    elif rotation == 3:
                         sandbox.rotate(Rotation.Anticlockwise)
                         moves.append(Rotation.Anticlockwise)
-                    xpos = sandbox.falling.left
+                    else:
+                        moves = []
                     while xpos > x and landed == False:
                         sandbox.move(Direction.Left)
                         moves.append(Direction.Left)
@@ -82,5 +79,3 @@ class RandomPlayer(Player):
 
 
 SelectedPlayer = RandomPlayer
-
-
